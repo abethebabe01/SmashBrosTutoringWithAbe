@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Tutoring";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <p>Calculate how much it will cost to take your game to the next level, one hour at a time!</p>
+    <label for="hours">Enter Number of Hours:</label>
+    <input type="number" id="hours" min="0" step="1">
+
+    <br>
+
+    <label for="chargePerHour">Charge Per Hour:</label>
+    <input type="text" id="chargePerHour" value="20" disabled>
+
+    <br>
+
+    <button id="calculateBtn">Calculate Total</button>
+
+    <br>
+
+    <label for="total">Total:</label>
+    <input type="text" id="total" readonly>
+
+    <br>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#calculateBtn").click(function () {
+                var hours = parseInt($("#hours").val());
+
+                if (hours >= 0) {
+                    var chargePerHour = 20;
+                    var total = hours * chargePerHour;
+                    $("#total").val("$" + total);
+                } else {
+                    alert("Please enter a valid number of hours.");
+                }
+            });
+        });
+    </script>
+}
